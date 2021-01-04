@@ -1,23 +1,20 @@
 package il.ac.shenkar.exercises.chat;
 
 public class ClientDescriptor implements StringConsumer, StringProducer{
-    private  StringConsumer _consumer;
-    private  String _name;
-
-    public void ClientDescriptor(String _name ){_name = "";}
+    private  StringConsumer consumer= null;
+    private  String name = null;
 
     public void addConsumer(StringConsumer sc) {    // חיבור הסוקט= חיבור המתמש
-        _consumer = sc;
+        consumer = sc;
         System.out.println("add consumer");
     }
 
     public void removeConsumer(StringConsumer sc){   // יציאה מהסוקט - מהחלון שיחה
-        _consumer = null;
-
+        consumer = null;
         System.out.println("remove consumer");
     }
 
-    public void consume(String str){           // מי עזב את הצט ומי נכנס לצט
+    public void consume(String str){           // מי עזב את הצט ומי נכנס לצט- ניהול משתמשים
 
         System.out.println("consume");
     }
