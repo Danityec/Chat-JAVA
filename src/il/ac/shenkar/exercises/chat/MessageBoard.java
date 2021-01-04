@@ -1,6 +1,7 @@
 package il.ac.shenkar.exercises.chat;
 
 public class MessageBoard implements StringConsumer, StringProducer {
+
     public void addConsumer(StringConsumer sc) {
         System.out.println("add consumer");
     }
