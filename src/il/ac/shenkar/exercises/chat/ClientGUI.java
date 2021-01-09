@@ -2,10 +2,7 @@ package il.ac.shenkar.exercises.chat;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -23,7 +20,8 @@ public class ClientGUI implements StringConsumer, StringProducer{
     private JTextArea messageBoard = new JTextArea(30,30);
 
     /*
-     * the constructor
+     * the constructor initializes the frame and
+     * dictates action to be preformed when the window is closed
      */
     public ClientGUI() {
         chatApp = new JFrame("Chat App");
@@ -56,10 +54,17 @@ public class ClientGUI implements StringConsumer, StringProducer{
         homePage();
     }
 
+    /*
+     * start sets the window visibility
+     */
     public void start() {
         chatApp.setVisible(true);
     }
 
+    /*
+     * homePage displays the first page of the application, the sign up page
+     * here a user enters a name and joins the chat
+     */
     public void homePage() {
         contentPanel.removeAll();
         chatApp.setSize(500, 150);
@@ -87,6 +92,12 @@ public class ClientGUI implements StringConsumer, StringProducer{
         submitBtn.addActionListener(addAction);
     }
 
+    /*
+     * chatPage displays the chat page of the application
+     * here a socket is created and the user is added to the chats server side
+     * messages from the messageBoard are displayed and
+     * there is a text field for the user to send his own messages
+     */
     public void chatPage() {
         contentPanel.removeAll();
         chatApp.setSize(500, 750);
@@ -140,16 +151,25 @@ public class ClientGUI implements StringConsumer, StringProducer{
         submitBtn.addActionListener(sendAction);
     }
 
+    /*
+     * consume adds new messages to the messageBoard
+     */
     public void consume(String str) {
         synchronized (messageBoard) {
             messageBoard.append(str + "\n");
         }
     }
 
+    /*
+     * addConsumer adds a new user to the application
+     */
     public void addConsumer(StringConsumer sc) {
         consumer = sc;
     }
 
+    /*
+     * removeConsumer removes a user from the application
+     */
     public void removeConsumer(StringConsumer sc) {
         consumer = null;
     }
