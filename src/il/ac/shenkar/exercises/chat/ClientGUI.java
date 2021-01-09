@@ -9,6 +9,9 @@ import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.Socket;
 
+/**
+ * clientGUI class provides the VIEW section of the chat application.
+ */
 public class ClientGUI implements StringConsumer, StringProducer{
     private JFrame chatApp;
     private String name ="";
@@ -19,6 +22,9 @@ public class ClientGUI implements StringConsumer, StringProducer{
     private ConnectionProxy connectionProxy;
     private JTextArea messageBoard = new JTextArea(30,30);
 
+    /*
+     * the constructor
+     */
     public ClientGUI() {
         chatApp = new JFrame("Chat App");
 
