@@ -4,17 +4,17 @@ import java.io.IOException;
 
 public class ClientDescriptor implements StringConsumer, StringProducer {
     private StringConsumer consumer = null;
-    private String name = null;
+    private String name = "";
 
-    public void addConsumer(StringConsumer sc) {    // חיבור הסוקט= חיבור המתמש
+    public void addConsumer(StringConsumer sc) {
         consumer = sc;
     }
 
-    public void removeConsumer(StringConsumer sc) {   // יציאה מהסוקט - מהחלון שיחה
+    public void removeConsumer(StringConsumer sc) {
         consumer = null;
     }
 
-    public void consume(String str) {           // מי עזב את הצט ומי נכנס לצט- ניהול משתמשים
+    public void consume(String str) {
         if (str.equals("disconnect")) {
             try {
                 consumer.consume(name + " left the chat");

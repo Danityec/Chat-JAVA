@@ -10,7 +10,7 @@ public class ServerApplication {
         ServerSocket server = null;
         MessageBoard mb = new MessageBoard();
         try {
-            server = new ServerSocket(1300, 5);  //connect new server to port 1300
+            server = new ServerSocket(1400, 5);
         } catch (IOException e) {
             System.out.println("error");
         }

@@ -9,6 +9,7 @@ public class MessageBoard implements StringConsumer, StringProducer {
     public MessageBoard() {
         consumerList = new ArrayList<>();
     }
+
     public void addConsumer(StringConsumer sc) {
         consumerList.add(sc);
     }
@@ -17,16 +18,13 @@ public class MessageBoard implements StringConsumer, StringProducer {
         consumerList.remove(sc);
     }
 
-    public void consume(String str) throws IOException{      //ניהול הודעות
-        //int i=0;
+    public void consume(String str) throws IOException{
         try {
             for ( int i=0; i < consumerList.size(); i++) {
                 consumerList.get(i).consume(str);
             }
         }catch (IOException e) {
             e.printStackTrace();
-//            removeConsumer(consumerList.get((i)));
-//            i--;
         }
 
     }
